@@ -1,5 +1,6 @@
 import React from 'react';
 import { TouchableOpacity, Text, StyleSheet } from 'react-native';
+import { Heading1 } from '../Typography/Heading1';
 interface MyButtonProps {
   onPress: () => void;
   text: string;
@@ -8,7 +9,7 @@ interface MyButtonProps {
 export const MyButton = ({ onPress, text }: MyButtonProps) => {
   return (
     <TouchableOpacity style={styles.container} onPress={onPress}>
-      <Text style={styles.text}>{text}</Text>
+      <Heading1 style={styles.text}>{text}</Heading1>
     </TouchableOpacity>
   );
 };
