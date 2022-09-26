@@ -2,7 +2,8 @@ import React from 'react';
 import { ThemeProvider } from 'styled-components/native';
 import StorybookUIRoot from './.ondevice/Storybook';
 import { RootNavigation } from './src/navigation';
-import { colorTheme } from '@/theme/colors/colors';
+import { colorTheme } from '@/theme/colors';
+import { fontTheme } from '@/theme/fonts';
 import { useColorScheme, View } from 'react-native';
 import { useFonts, Poppins_400Regular, Poppins_700Bold } from '@expo-google-fonts/poppins';
 import * as SplashScreen from 'expo-splash-screen';
@@ -34,9 +35,14 @@ export const App = () => {
     return null;
   }
 
+  const theme = {
+    font: fontTheme,
+    color: colorTheme[colorScheme as keyof typeof colorTheme],
+  };
+
   return (
     <View style={{ flex: 1 }} onLayout={onLayoutRootView}>
-      <ThemeProvider theme={colorTheme[colorScheme as keyof typeof colorTheme]}>
+      <ThemeProvider theme={theme}>
         <RootNavigation />
       </ThemeProvider>
     </View>
