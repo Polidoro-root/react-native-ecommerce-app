@@ -32,7 +32,10 @@ try {
 const getStories = () => {
   return [
     require("../src/components/Button/Button.stories.tsx"),
-    require("../src/components/Typography/Typography.stories.tsx"),
+    require("../src/components/Typography/Body/Body.stories.tsx"),
+    require("../src/components/Typography/Caption/Caption.stories.tsx"),
+    require("../src/components/Typography/Heading/Heading.stories.tsx"),
+    require("../src/components/Typography/Link/Link.stories.tsx"),
   ];
 };
 
