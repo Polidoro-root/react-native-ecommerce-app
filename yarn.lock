@@ -3229,6 +3229,24 @@
     resolve-from "^5.0.0"
     store2 "^2.12.0"
 
+"@testing-library/jest-native@^4.0.13":
+  version "4.0.13"
+  resolved "https://registry.yarnpkg.com/@testing-library/jest-native/-/jest-native-4.0.13.tgz#3d2a27ffac9f8126a4185e46a167b0cde4443336"
+  integrity sha512-BovApxYJRb0Z9TUZbFQhW2ZWC4KfymH1SQZ5FxcTHh7Zrzb6+vfWT1CyvGnb8JE6WEZGcuumzSXOMdSIVUjj5Q==
+  dependencies:
+    chalk "^4.1.2"
+    jest-diff "^29.0.1"
+    jest-matcher-utils "^29.0.1"
+    pretty-format "^29.0.1"
+    redent "^3.0.0"
+
+"@testing-library/react-native@^11.2.0":
+  version "11.2.0"
+  resolved "https://registry.yarnpkg.com/@testing-library/react-native/-/react-native-11.2.0.tgz#5408a745d71f87509763d73914c38db383094bdd"
+  integrity sha512-j3t78/htRkjPJjLlEjh9VxIAvcCJ85CG2L8mKH1mz9F3gyH65MH/JScOY2RHGOkTHGAGh5c+53Dw4u7J1WEJSA==
+  dependencies:
+    pretty-format "^29.0.3"
+
 "@tootallnate/once@1":
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/@tootallnate/once/-/once-1.1.2.tgz#ccb91445360179a04e7fe6aff78c00ffc1eeaf82"
@@ -8997,7 +9015,7 @@ jest-diff@^26.6.2:
     jest-get-type "^26.3.0"
     pretty-format "^26.6.2"
 
-jest-diff@^29.0.3:
+jest-diff@^29.0.1, jest-diff@^29.0.3:
   version "29.0.3"
   resolved "https://registry.yarnpkg.com/jest-diff/-/jest-diff-29.0.3.tgz#41cc02409ad1458ae1bf7684129a3da2856341ac"
   integrity sha512-+X/AIF5G/vX9fWK+Db9bi9BQas7M9oBME7egU7psbn4jlszLFCu0dW63UgeE6cs/GANq4fLaT+8sGHQQ0eCUfg==
@@ -9158,7 +9176,7 @@ jest-matcher-utils@^26.6.2:
     jest-get-type "^26.3.0"
     pretty-format "^26.6.2"
 
-jest-matcher-utils@^29.0.3:
+jest-matcher-utils@^29.0.1, jest-matcher-utils@^29.0.3:
   version "29.0.3"
   resolved "https://registry.yarnpkg.com/jest-matcher-utils/-/jest-matcher-utils-29.0.3.tgz#b8305fd3f9e27cdbc210b21fc7dbba92d4e54560"
   integrity sha512-RsR1+cZ6p1hDV4GSCQTg+9qjeotQCgkaleIKLK7dm+U4V/H2bWedU3RAtLm8+mANzZ7eDV33dMar4pejd7047w==
@@ -11631,7 +11649,7 @@ pretty-format@^27.5.1:
     ansi-styles "^5.0.0"
     react-is "^17.0.1"
 
-pretty-format@^29.0.0, pretty-format@^29.0.3:
+pretty-format@^29.0.0, pretty-format@^29.0.1, pretty-format@^29.0.3:
   version "29.0.3"
   resolved "https://registry.yarnpkg.com/pretty-format/-/pretty-format-29.0.3.tgz#23d5f8cabc9cbf209a77d49409d093d61166a811"
   integrity sha512-cHudsvQr1K5vNVLbvYF/nv3Qy/F/BcEKxGuIeMiVMRHxPOO1RxXooP8g/ZrwAp7Dx+KdMZoOc7NxLHhMrP2f9Q==
@@ -12355,6 +12373,14 @@ recursive-readdir@2.2.2:
   integrity sha512-nRCcW9Sj7NuZwa2XvH9co8NPeXUBhZP7CRKJtU+cS6PW9FpCIFoI5ib0NT1ZrbNuPoRy0ylyCaUL8Gih4LSyFg==
   dependencies:
     minimatch "3.0.4"
+
+redent@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/redent/-/redent-3.0.0.tgz#e557b7998316bb53c9f1f56fa626352c6963059f"
+  integrity sha512-6tDA8g98We0zd0GvVeMT9arEOnTw9qM03L9cJXaCjrip1OO764RDBLBfrB4cwzNGDj5OA5ioymC9GkizgWJDUg==
+  dependencies:
+    indent-string "^4.0.0"
+    strip-indent "^3.0.0"
 
 refractor@^3.1.0:
   version "3.6.0"
