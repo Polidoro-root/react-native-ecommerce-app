@@ -1,5 +1,5 @@
 import { MyButton } from '@/components/Button/Button';
-import { DefaultTextInput } from '@/components/Form/DefaultTextInput/DefaultTextInput';
+import { Input } from '@/components/Form/Input/Input';
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { Pressable, Text } from 'react-native';
@@ -27,11 +27,7 @@ export function HomeScreen() {
 
   return (
     <Page>
-      <DefaultTextInput
-        name="email"
-        control={control}
-        inputProps={{ style: { backgroundColor: '#fff' } }}
-      />
+      <Input name="email" control={control} />
       <Pressable onPress={handleSubmit(onSubmit)}>
         <Text>Submit</Text>
       </Pressable>
