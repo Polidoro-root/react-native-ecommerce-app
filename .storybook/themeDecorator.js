@@ -1,4 +1,5 @@
 import React from 'react';
+import { View } from 'react-native';
 import { createGlobalStyle } from 'styled-components';
 import { ThemeProvider } from 'styled-components/native';
 import { colorTheme } from '../src/theme/colors';
@@ -21,7 +22,9 @@ const GlobalStyles = createGlobalStyle`
 
 export const themeDecorator = (Story) => (
   <ThemeProvider theme={theme}>
-    <Story />
+    <View style={{ flex: 1 }}>
+      <Story />
+    </View>
     <GlobalStyles />
   </ThemeProvider>
 );

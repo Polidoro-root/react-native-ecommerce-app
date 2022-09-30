@@ -31,8 +31,8 @@ try {
 
 const getStories = () => {
   return [
-    require("../src/components/Button/Button.stories.tsx"),
     require("../src/components/Form/Input/Input.stories.tsx"),
+    require("../src/components/Logo/Logo.stories.tsx"),
     require("../src/components/Typography/Body/Body.stories.tsx"),
     require("../src/components/Typography/Caption/Caption.stories.tsx"),
     require("../src/components/Typography/Heading/Heading.stories.tsx"),

@@ -10,12 +10,12 @@ interface LogoProps extends SvgProps {
 export const Logo = ({ rounded, invertedColors, ...props }: LogoProps) => {
   const theme = useTheme();
 
-  const backgroundRx = rounded ? 75 : 5;
+  const backgroundRx = rounded ? 75 : 16;
   const backgroundFill = invertedColors ? theme.color.background : theme.color.primary.blue;
   const logoFill = invertedColors ? theme.color.primary.blue : theme.color.background;
 
-  const width = props?.width || 150;
-  const height = props?.height || 150;
+  const width = props?.width || 72;
+  const height = props?.height || 72;
 
   const viewBox = `0 0 ${width} ${height}`;
 
@@ -25,7 +25,7 @@ export const Logo = ({ rounded, invertedColors, ...props }: LogoProps) => {
       <Path
         fillRule="evenodd"
         clipRule="evenodd"
-        d="M119.485 66.515c4.687 4.686 4.687 12.284 0 16.97l-36 36c-4.686 4.687-12.284 4.687-16.97 0l-36-36c-4.687-4.686-4.687-12.284 0-16.97l36-36c4.686-4.687 12.284-4.687 16.97 0l36 36ZM75 55.97 55.97 75 75 94.03 94.03 75 75 55.97Z"
+        d="M50.828 33.172a4 4 0 0 1 0 5.656l-12 12a4 4 0 0 1-5.656 0l-12-12a4 4 0 0 1 0-5.656l12-12a4 4 0 0 1 5.656 0l12 12ZM36 29.657 29.657 36 36 42.343 42.343 36 36 29.657Z"
         fill={logoFill}
       />
     </Svg>

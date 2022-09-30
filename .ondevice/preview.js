@@ -1,7 +1,9 @@
 import { withBackgrounds } from '@storybook/addon-ondevice-backgrounds';
+import { withTests } from '@storybook/addon-jest';
 import { themeDecorator } from './themeDecorator';
+import results from '../.jest-test-results.json';
 
-export const decorators = [withBackgrounds, themeDecorator];
+export const decorators = [withBackgrounds, themeDecorator, withTests({ results })];
 
 export const parameters = {
   backgrounds: [

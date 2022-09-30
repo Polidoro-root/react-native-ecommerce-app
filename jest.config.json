@@ -3,6 +3,7 @@
   "transformIgnorePatterns": [
     "node_modules/(?!((jest-)?react-native|@react-native(-community)?)|expo(nent)?|@expo(nent)?/.*|@expo-google-fonts/.*|react-navigation|@react-navigation/.*|@unimodules/.*|unimodules|sentry-expo|native-base|react-native-svg)"
   ],
+  "modulePathIgnorePatterns": ["jest-test-results.json"],
   "moduleDirectories": ["node_modules", "utils", "<rootDir>"],
   "setupFilesAfterEnv": ["<rootDir>/setup.ts", "@testing-library/jest-native/extend-expect"]
 }

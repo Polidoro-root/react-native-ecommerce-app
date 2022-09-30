@@ -4,6 +4,7 @@ module.exports = {
     '@storybook/addon-links',
     '@storybook/addon-essentials',
     '@storybook/addon-react-native-web',
+    '@storybook/addon-jest',
   ],
   framework: '@storybook/react',
 };

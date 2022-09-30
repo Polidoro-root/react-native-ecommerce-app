@@ -4,18 +4,19 @@ import { ThemeProvider } from 'styled-components/native';
 import { colorTheme } from '@/theme/colors';
 import { fontTheme } from '@/theme/fonts';
 
-const theme = {
-  font: fontTheme,
-  color: colorTheme.light,
-};
-
 const AllTheProviders = ({ children }: any) => {
-  return <ThemeProvider theme={theme as any}>{children}</ThemeProvider>;
+  const theme = {
+    font: fontTheme,
+    color: colorTheme.light,
+  };
+
+  return <ThemeProvider theme={theme}>{children}</ThemeProvider>;
 };
 
 const customRender = <T,>(ui: React.ReactElement<T>, options?: RenderOptions) =>
   render(ui, {
     wrapper: AllTheProviders,
+
     ...options,
   });
 

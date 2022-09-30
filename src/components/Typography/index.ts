@@ -14,6 +14,7 @@ import { Caption1 } from './Caption/Caption1';
 import { Caption2 } from './Caption/Caption2';
 import { Caption3 } from './Caption/Caption3';
 import { Caption4 } from './Caption/Caption4';
+import { Link1 } from './Link/Link1';
 
 export const Typography = {
   Heading1,
@@ -32,4 +33,5 @@ export const Typography = {
   Caption2,
   Caption3,
   Caption4,
+  Link1,
 };
