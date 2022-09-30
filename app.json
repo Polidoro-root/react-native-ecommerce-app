@@ -8,7 +8,7 @@
     "splash": {
       "image": "./src/assets/splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#40BFFF"
     },
     "updates": {
       "fallbackToCacheTimeout": 0
@@ -18,9 +18,11 @@
       "supportsTablet": true
     },
     "android": {
+      "package": "br.com.ecommerce",
+      "permissions": ["ACCESS_COARSE_LOCATION", "ACCESS_FINE_LOCATION", "USE_BIOMETRIC"],
       "adaptiveIcon": {
         "foregroundImage": "./src/assets/adaptive-icon.png",
-        "backgroundColor": "#FFFFFF"
+        "backgroundColor": "#40BFFF"
       }
     },
     "web": {

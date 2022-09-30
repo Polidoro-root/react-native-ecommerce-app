@@ -8,7 +8,7 @@ import { useColorScheme, View } from 'react-native';
 import { useFonts, Poppins_400Regular, Poppins_700Bold } from '@expo-google-fonts/poppins';
 import * as SplashScreen from 'expo-splash-screen';
 
-export { StorybookUIRoot as default };
+// export { StorybookUIRoot as default };
 
 export const App = () => {
   const colorScheme = useColorScheme();
@@ -27,7 +27,7 @@ export const App = () => {
 
   const onLayoutRootView = React.useCallback(async () => {
     if (fontsLoaded) {
-      await SplashScreen.hideAsync();
+      setTimeout(SplashScreen.hideAsync, 1000);
     }
   }, [fontsLoaded]);
 
@@ -49,4 +49,4 @@ export const App = () => {
   );
 };
 
-// export default App;
+export default App;

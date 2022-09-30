@@ -9,9 +9,17 @@ describe('<Input />', () => {
   it('should renders correctly', () => {
     const { result } = renderHook(() => useForm());
 
-    render(
-      <Input name="input" control={result.current.control} inputProps={{ placeholder: 'input' }} />
-    );
+    render(<Input name="input" control={result.current.control} placeholder="input" />);
+
+    const input = screen.getByPlaceholderText(/input/i);
+
+    expect(input).toBeTruthy();
+  });
+
+  it('should renders correctly with icon prop', () => {
+    const { result } = renderHook(() => useForm());
+
+    render(<Input name="input" control={result.current.control} placeholder="input" icon="mail" />);
 
     const input = screen.getByPlaceholderText(/input/i);
 
@@ -21,9 +29,7 @@ describe('<Input />', () => {
   it('should change input value', async () => {
     const { result } = renderHook(() => useForm());
 
-    render(
-      <Input name="input" control={result.current.control} inputProps={{ placeholder: 'input' }} />
-    );
+    render(<Input name="input" control={result.current.control} placeholder="input" />);
 
     const input = screen.getByPlaceholderText(/input/i);
 
@@ -43,16 +49,12 @@ describe('<Input />', () => {
       },
     });
 
-    render(
-      <Input name="input" control={result.current.control} inputProps={{ placeholder: 'input' }} />
-    );
+    render(<Input name="input" control={result.current.control} placeholder="input" />);
 
     const input = screen.getByPlaceholderText(/input/i);
 
     fireEvent.changeText(input, '12');
 
     const textError = screen.queryByText('Must have less than 10 characters');
-
-    console.log(textError);
   });
 });

@@ -1,12 +1,24 @@
+import { Heading6 } from '@/components/Typography/Heading/Heading6';
 import styled, { css } from 'styled-components/native';
 
-export const InputContainer = styled.View``;
+export const Container = styled.View`
+  width: 100%;
+`;
+
+export const TextInputContainer = styled.View`
+  flex-direction: row;
+  position: relative;
+`;
 
 export const TextInput = styled.TextInput.attrs((props) => ({
   placeholderTextColor: props.theme.color.neutral.gray,
-  textAlignVertical: 'center',
-}))<{ isFocused?: boolean }>`
-  padding: 13px 16px;
+  textAlignVertical: 'bottom',
+}))<{ isFocused?: boolean; hasIcon?: boolean }>`
+  padding-top: 13px;
+  padding-bottom: 13px;
+  padding-right: 13px;
+  padding-left: ${(props) => (props.hasIcon ? '50px' : '16px')};
+  flex: 1;
 
   background-color: ${(props) => props.theme.color.background};
   color: ${(props) => props.theme.color.neutral.gray};
@@ -18,4 +30,6 @@ export const TextInput = styled.TextInput.attrs((props) => ({
   ${(props) => css(props.isFocused ? props.theme.font.body._1 : props.theme.font.body._2)}
 `;
 
-export const InputTextError = styled.Text``;
+export const InputTextError = styled(Heading6)`
+  color: ${(props) => props.theme.color.primary.red};
+`;
