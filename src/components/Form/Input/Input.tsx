@@ -1,9 +1,10 @@
 import React from 'react';
-import { useController, UseControllerProps } from 'react-hook-form';
-import { TextInput as RNTextInput, TextInputProps } from 'react-native';
+import { UseControllerProps } from 'react-hook-form';
+import { TextInputProps } from 'react-native';
 import { InputTextError, TextInput, TextInputContainer, Container } from './Input.styles';
 import { Feather } from '@expo/vector-icons';
 import { useTheme } from 'styled-components/native';
+import { useInput } from './useInput';
 
 interface InputProps
   extends Omit<UseControllerProps, 'render'>,
@@ -15,66 +16,59 @@ export interface InputRef {
   focus(): void;
 }
 
-export const Input = React.forwardRef<InputRef, InputProps>(
-  (
-    {
-      name,
-      control,
-      defaultValue,
-      rules,
-      shouldUnregister,
-      icon,
+const iconNames = {
+  mail: 'mail',
+  user: 'user',
+  password: 'lock',
+};
 
-      ...props
-    },
-    forwardRef
-  ) => {
+export const Input = React.forwardRef<InputRef, InputProps>(
+  ({ name, control, defaultValue, rules, shouldUnregister, icon, ...props }, forwardRef) => {
+    const controller = { name, control, defaultValue: defaultValue ?? '', rules, shouldUnregister };
+
     const {
-      field: { onBlur, onChange, ref, value },
-      fieldState: { error },
-    } = useController({ name, control, defaultValue, rules, shouldUnregister });
+      error,
+      isFocused,
+      onChange,
+      onIconPress,
+      onInputBlur,
+      onInputFocus,
+      ref,
+      value,
+    } = useInput({
+      forwardRef,
+      controller,
+    });
 
     const theme = useTheme();
 
-    const inputRef = React.useRef<RNTextInput | null>(null);
+    const defaultColor = isFocused ? theme.color.primary.blue : theme.color.neutral.gray;
 
-    const [isFocused, setIsFocused] = React.useState(false);
-
-    React.useImperativeHandle(forwardRef, () => ({
-      focus() {
-        inputRef.current?.focus();
-      },
-    }));
+    const iconName = iconNames?.[icon] ?? '';
 
     return (
       <Container>
         <TextInputContainer>
-          {!!icon && (
+          {!!iconName && (
             <Feather
-              name={icon}
+              testID={`Input__${name}__Icon__${icon}`}
+              name={iconName}
               size={24}
-              color={isFocused ? theme.color.primary.blue : theme.color.neutral.gray}
+              color={!!error ? theme.color.primary.red : defaultColor}
               style={{ position: 'absolute', top: 16, left: 16, elevation: 1, zIndex: 1 }}
-              onPress={() => {
-                inputRef.current?.focus();
-              }}
+              onPress={onIconPress}
             />
           )}
           <TextInput
             {...props}
-            onFocus={() => setIsFocused(true)}
-            onBlur={() => {
-              setIsFocused(false);
-              onBlur();
-            }}
+            onFocus={onInputFocus}
+            onBlur={onInputBlur}
             onChangeText={onChange}
-            ref={(currentRef) => {
-              ref(currentRef);
-              inputRef!.current = currentRef;
-            }}
+            ref={ref}
             value={value}
             isFocused={isFocused}
             hasIcon={!!icon}
+            hasError={!!error}
           />
         </TextInputContainer>
 

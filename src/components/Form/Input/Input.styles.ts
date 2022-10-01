@@ -13,7 +13,7 @@ export const TextInputContainer = styled.View`
 export const TextInput = styled.TextInput.attrs((props) => ({
   placeholderTextColor: props.theme.color.neutral.gray,
   textAlignVertical: 'bottom',
-}))<{ isFocused?: boolean; hasIcon?: boolean }>`
+}))<{ isFocused?: boolean; hasIcon?: boolean; hasError?: boolean }>`
   padding-top: 13px;
   padding-bottom: 13px;
   padding-right: 13px;
@@ -22,12 +22,18 @@ export const TextInput = styled.TextInput.attrs((props) => ({
 
   background-color: ${(props) => props.theme.color.background};
   color: ${(props) => props.theme.color.neutral.gray};
-  border: 1px solid
-    ${(props) =>
-      props.isFocused ? props.theme.color.primary.blue : props.theme.color.neutral.light};
+  border-width: 1px;
+  border-style: solid;
+  border-color: ${(props) => {
+    const defaultColor = props.isFocused
+      ? props.theme.color.primary.blue
+      : props.theme.color.neutral.light;
+
+    return props.hasError ? props.theme.color.primary.red : defaultColor;
+  }};
   border-radius: 5px;
 
-  ${(props) => css(props.isFocused ? props.theme.font.body._1 : props.theme.font.body._2)}
+  ${(props) => css(props.theme.font.body._2)}
 `;
 
 export const InputTextError = styled(Heading6)`

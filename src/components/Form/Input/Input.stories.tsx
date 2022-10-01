@@ -7,7 +7,22 @@ import { useForm } from 'react-hook-form';
 const InputMeta: ComponentMeta<typeof Input> = {
   title: 'Components/Form/Input',
   component: Input,
-  argTypes: {},
+  argTypes: {
+    placeholder: {
+      name: 'placeholder',
+      type: { name: 'string', required: false },
+      defaultValue: 'Placeholder',
+      description: 'Input placeholder',
+      control: { type: 'text' },
+    },
+    icon: {
+      name: 'icon',
+      options: ['mail', 'password', 'user'],
+      defaultValue: '',
+      description: 'Icon before Input text',
+      control: { type: 'select' },
+    },
+  },
   args: {},
 };
 
@@ -15,18 +30,20 @@ export default InputMeta;
 
 type InputStory = ComponentStory<typeof Input>;
 
-export const Default: InputStory = (args) => {
+const Template: InputStory = (args) => {
   const { control } = useForm();
 
   return (
-    <View>
-      <Input
-        {...args}
-        style={{ width: 300 }}
-        name="Input"
-        control={control}
-        placeholder="Placeholder"
-      />
+    <View style={{ width: 300 }}>
+      <Input {...args} name="input" control={control} />
     </View>
   );
+};
+
+export const Default = Template.bind({});
+
+export const WithIcon = Template.bind({});
+WithIcon.args = {
+  icon: 'user',
+  placeholder: 'With icon',
 };
