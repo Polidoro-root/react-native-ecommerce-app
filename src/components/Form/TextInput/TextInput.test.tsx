@@ -1,6 +1,6 @@
 import React from 'react';
 import { fireEvent, render, renderHook, screen } from '@/utils/test-utils';
-import { Input } from './Input';
+import { Input } from './TextInput';
 import { useForm } from 'react-hook-form';
 
 describe('<Input />', () => {

@@ -1,14 +1,14 @@
 import React from 'react';
 import { useController, UseControllerProps } from 'react-hook-form';
 import { TextInput } from 'react-native';
-import { InputRef } from './Input';
+import { TextInputRef } from './TextInput';
 
-interface UseInputProps {
+interface UseTextInputProps {
   controller: UseControllerProps;
-  forwardRef: React.ForwardedRef<InputRef>;
+  forwardRef: React.ForwardedRef<TextInputRef>;
 }
 
-export const useInput = ({ controller, forwardRef }: UseInputProps) => {
+export const useTextInput = ({ controller, forwardRef }: UseTextInputProps) => {
   const {
     field,
     fieldState: { error },
@@ -35,6 +35,13 @@ export const useInput = ({ controller, forwardRef }: UseInputProps) => {
     field.ref(currentRef);
     inputRef!.current = currentRef;
   };
+
+  React.useEffect(() => {
+    const inputIsFocused = inputRef.current?.isFocused();
+    if (isFocused && !inputIsFocused) {
+      inputRef.current?.focus();
+    }
+  }, [isFocused]);
 
   React.useImperativeHandle(forwardRef, () => ({
     focus() {

@@ -9,14 +9,12 @@ const LogoMeta: ComponentMeta<typeof Logo> = {
     rounded: {
       name: 'rounded',
       type: { name: 'boolean', required: false },
-      defaultValue: false,
       description: 'Set Rect rx to 75',
       control: { type: 'boolean' },
     },
     invertedColors: {
       name: 'invertedColors',
       type: { name: 'boolean', required: false },
-      defaultValue: false,
       description: 'Set Rect rx to 75',
       control: { type: 'boolean' },
     },

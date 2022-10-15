@@ -1,27 +1,23 @@
 import { Heading6 } from '@/components/Typography/Heading/Heading6';
+import { Pressable } from 'react-native';
 import styled, { css } from 'styled-components/native';
 
 export const Container = styled.View`
   width: 100%;
 `;
 
-export const TextInputContainer = styled.View`
+export const TextInputContainer = styled(Pressable)<{ isFocused?: boolean; hasError?: boolean }>`
   flex-direction: row;
-  position: relative;
-`;
+  align-items: center;
 
-export const TextInput = styled.TextInput.attrs((props) => ({
-  placeholderTextColor: props.theme.color.neutral.gray,
-  textAlignVertical: 'bottom',
-}))<{ isFocused?: boolean; hasIcon?: boolean; hasError?: boolean }>`
-  padding-top: 13px;
-  padding-bottom: 13px;
-  padding-right: 13px;
-  padding-left: ${(props) => (props.hasIcon ? '50px' : '16px')};
-  flex: 1;
+  padding-right: 16px;
+  padding-left: 16px;
 
   background-color: ${(props) => props.theme.color.background};
-  color: ${(props) => props.theme.color.neutral.gray};
+
+  height: 48px;
+  min-height: 48px;
+
   border-width: 1px;
   border-style: solid;
   border-color: ${(props) => {
@@ -32,6 +28,17 @@ export const TextInput = styled.TextInput.attrs((props) => ({
     return props.hasError ? props.theme.color.primary.red : defaultColor;
   }};
   border-radius: 5px;
+`;
+
+export const TextInput = styled.TextInput.attrs((props) => ({
+  placeholderTextColor: props.theme.color.neutral.gray,
+  textAlignVertical: 'bottom',
+}))`
+  flex: 1;
+  width: 100%;
+
+  background-color: transparent;
+  color: ${(props) => props.theme.color.neutral.gray};
 
   ${(props) => css(props.theme.font.body._2)}
 `;

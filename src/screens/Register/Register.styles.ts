@@ -1,4 +1,4 @@
-import { Input } from '@/components/Form/Input/Input';
+import { TextInput } from '@/components/Form/TextInput/TextInput';
 import { TextButton } from '@/components/TextButton/TextButton';
 import { Typography } from '@/components/Typography';
 import { Pressable } from 'react-native';
@@ -23,7 +23,7 @@ export const PageSubitle = styled(Typography.Body6)`
   margin-bottom: 20px;
 `;
 
-export const StyledInput = styled(Input)`
+export const StyledInputRoot = styled(TextInput.Root)`
   margin-top: 8px;
 `;
 

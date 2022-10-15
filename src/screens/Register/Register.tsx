@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import { Logo } from '@/components/Logo/Logo';
 import {
   Page,
@@ -7,10 +7,13 @@ import {
   SignInButton,
   SignInButtonText,
   SignInButtonTextLink,
-  StyledInput,
+  StyledInputRoot,
   SignUpButton,
 } from './Register.styles';
 import { useRegister } from './useRegister';
+import { ModalLoader } from '@/components/Modals/ModalLoader/ModalLoader';
+import { TextInput } from '@/components/Form/TextInput/TextInput';
+import { Feather } from '@expo/vector-icons';
 
 export function RegisterScreen() {
   const { control, onSubmit } = useRegister();
@@ -23,30 +26,33 @@ export function RegisterScreen() {
 
       <PageSubitle>Create a new account</PageSubitle>
 
-      <StyledInput name="name" control={control} placeholder="Full Name" icon="user" />
+      <StyledInputRoot name="name" control={control}>
+        <TextInput.Icon>
+          <Feather name="user" />
+        </TextInput.Icon>
+        <TextInput.Input placeholder="Full Name" />
+      </StyledInputRoot>
 
-      <StyledInput
-        name="email"
-        keyboardType="email-address"
-        control={control}
-        placeholder="Your Email"
-        icon="mail"
-      />
+      <StyledInputRoot name="email" control={control}>
+        <TextInput.Icon>
+          <Feather name="mail" />
+        </TextInput.Icon>
+        <TextInput.Input placeholder="Your Email" />
+      </StyledInputRoot>
 
-      <StyledInput
-        name="password"
-        keyboardType="visible-password"
-        control={control}
-        placeholder="Password"
-        icon="password"
-      />
+      <StyledInputRoot name="password" control={control}>
+        <TextInput.Icon>
+          <Feather name="lock" />
+        </TextInput.Icon>
+        <TextInput.Input placeholder="Password" secureTextEntry />
+      </StyledInputRoot>
 
-      <StyledInput
-        name="confirmPassword"
-        control={control}
-        placeholder="Password Again"
-        icon="password"
-      />
+      <StyledInputRoot name="confirmPassword" control={control}>
+        <TextInput.Icon>
+          <Feather name="lock" />
+        </TextInput.Icon>
+        <TextInput.Input placeholder="Password Again" secureTextEntry />
+      </StyledInputRoot>
 
       <SignUpButton text="Sign Up" onPress={onSubmit} />
 
