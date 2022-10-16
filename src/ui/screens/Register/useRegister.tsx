@@ -2,7 +2,6 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
-import { userService } from '@/services/userService';
 
 const schema = yup.object({
   name: yup
@@ -25,13 +24,7 @@ export const useRegister = () => {
     resolver: yupResolver(schema),
   });
 
-  const onSubmit = handleSubmit(async ({ name, password, email }) => {
-    try {
-      await userService.save({ name, password, email });
-    } catch (error) {
-      console.error(error);
-    }
-  });
+  const onSubmit = handleSubmit(async ({ name, password, email }) => {});
 
   return { control, onSubmit };
 };

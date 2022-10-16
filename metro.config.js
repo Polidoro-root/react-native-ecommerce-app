@@ -7,6 +7,8 @@ defaultConfig.resolver.resolverMainFields = [
   ...defaultConfig.resolver.resolverMainFields,
 ];
 
+defaultConfig.resolver.assetExts.push('cjs');
+
 defaultConfig.transformer.getTransformOptions = async () => ({
   transform: {
     experimentalImportSupport: false,

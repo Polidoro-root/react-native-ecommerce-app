@@ -1,8 +1,8 @@
 import React from 'react';
 import { render, RenderOptions } from '@testing-library/react-native';
 import { ThemeProvider } from 'styled-components/native';
-import { colorTheme } from '@/theme/colors';
-import { fontTheme } from '@/theme/fonts';
+import { colorTheme } from '@/ui/theme/colors';
+import { fontTheme } from '@/ui/theme/fonts';
 
 const AllTheProviders = ({ children }: any) => {
   const theme = {

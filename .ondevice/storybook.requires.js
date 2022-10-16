@@ -31,12 +31,12 @@ try {
 
 const getStories = () => {
   return [
-    require("../src/components/Form/TextInput/TextInput.stories.tsx"),
-    require("../src/components/Logo/Logo.stories.tsx"),
-    require("../src/components/Typography/Body/Body.stories.tsx"),
-    require("../src/components/Typography/Caption/Caption.stories.tsx"),
-    require("../src/components/Typography/Heading/Heading.stories.tsx"),
-    require("../src/components/Typography/Link/Link.stories.tsx"),
+    require("../src/ui/components/Form/TextInput/TextInput.stories.tsx"),
+    require("../src/ui/components/Logo/Logo.stories.tsx"),
+    require("../src/ui/components/Typography/Body/Body.stories.tsx"),
+    require("../src/ui/components/Typography/Caption/Caption.stories.tsx"),
+    require("../src/ui/components/Typography/Heading/Heading.stories.tsx"),
+    require("../src/ui/components/Typography/Link/Link.stories.tsx"),
   ];
 };
 
