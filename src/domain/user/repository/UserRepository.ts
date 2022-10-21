@@ -4,5 +4,5 @@ import { UserToRegister } from '@/domain/user/types';
 export interface UserRepository {
   getCurrentUser(): User;
 
-  registerUser(user: UserToRegister): Promise<void>;
+  registerUser(user: UserToRegister): Promise<User>;
 }

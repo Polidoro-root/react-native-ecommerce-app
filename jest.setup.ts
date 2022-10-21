@@ -12,18 +12,3 @@ jest.mock('react-native-reanimated', () => {
 });
 
 jest.mock('react-native/Libraries/Animated/NativeAnimatedHelper');
-
-jest.mock('firebase/app', () => {
-  return {
-    initializeApp: jest.fn(),
-  };
-});
-
-jest.mock('firebase/database', () => {
-  return {
-    getDatabase: jest.fn(),
-    ref: jest.fn(),
-    push: jest.fn(),
-    set: jest.fn(),
-  };
-});

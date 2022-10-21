@@ -3,67 +3,38 @@ import { UserError } from './UserError';
 
 export class User {
   static fromProperties(props: UserProps) {
-    return new User(props);
+    if (!props) {
+      throw new UserError('User must have id, name and email');
+    }
+
+    const { id, name, email, phone, gender, birthday } = props;
+
+    return new User(id, name, email, phone, gender, birthday);
   }
 
-  get id() {
-    return this.props.id;
-  }
+  private constructor(
+    private readonly id: string,
+    private readonly name: string,
+    private readonly email: string,
+    private readonly phone?: string,
+    private readonly gender?: UserGender,
+    private readonly birthday?: string
+  ) {
+    this.validateRequiredProps({
+      id,
+      name,
+      email,
+    });
 
-  get name() {
-    return this.props.name;
-  }
+    this.validateIfHasMoreThanOneName(name);
 
-  get email() {
-    return this.props.email;
-  }
+    this.validateIfHasValidEmail(email);
 
-  get phone() {
-    return this.props.phone;
-  }
-
-  set phone(phone: string | undefined) {
     this.validateIfHasValidPhone(phone);
 
-    this.props.phone = phone;
-  }
-
-  get birthday() {
-    return this.props.birthday;
-  }
-
-  set birthday(birthday: string | undefined) {
     this.validateIfHasValidBirthday(birthday);
 
-    this.props.birthday = birthday;
-  }
-
-  get gender() {
-    return this.props.gender;
-  }
-
-  set gender(gender: UserGender | undefined) {
     this.validateIfHasValidGender(gender);
-
-    this.props.gender = gender;
-  }
-
-  private props: UserProps;
-
-  private constructor(props: UserProps) {
-    this.validateRequiredProps(props);
-
-    this.validateIfHasMoreThanOneName(props.name);
-
-    this.validateIfHasValidEmail(props.email);
-
-    this.validateIfHasValidPhone(props?.phone);
-
-    this.validateIfHasValidBirthday(props?.birthday);
-
-    this.validateIfHasValidGender(props?.gender);
-
-    this.props = props;
   }
 
   private validateRequiredProps(props: UserProps) {

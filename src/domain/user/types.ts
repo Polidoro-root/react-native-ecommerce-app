@@ -9,4 +9,4 @@ export interface UserProps {
   birthday?: string;
 }
 
-export type UserToRegister = Omit<UserProps, 'id'>;
+export type UserToRegister = Pick<UserProps, 'name' | 'email'>;

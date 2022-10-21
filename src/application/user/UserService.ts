@@ -1,10 +1,10 @@
 import { UserRepository } from '@/domain/user/repository/UserRepository';
 import { UserToRegister } from '@/domain/user/types';
-import { RegisterUserUseCase } from './use-cases/RegisterUserUseCase';
+import { RegisterUserUseCase } from './useCases/RegisterUserUseCase';
 
 export class UserService {
   async registerUser(newUser: UserToRegister) {
-    await this.registerUserUseCase.execute(newUser);
+    return await this.registerUserUseCase.execute(newUser);
   }
 
   private registerUserUseCase: RegisterUserUseCase;

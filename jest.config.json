@@ -5,5 +5,5 @@
   ],
   "modulePathIgnorePatterns": ["jest-test-results.json"],
   "moduleDirectories": ["node_modules", "utils", "<rootDir>"],
-  "setupFilesAfterEnv": ["<rootDir>/setup.ts", "@testing-library/jest-native/extend-expect"]
+  "setupFilesAfterEnv": ["<rootDir>/jest.setup.ts", "@testing-library/jest-native/extend-expect"]
 }

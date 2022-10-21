@@ -9,12 +9,18 @@ describe('User domain', () => {
     it('should instantiate a user', () => {
       const user = User.fromProperties(defaultUser);
 
-      expect(user).toEqual({ props: defaultUser });
+      expect(user).toEqual(defaultUser);
     });
 
-    describe('on receive invalid props', () => {
+    describe('when receive invalid required properties', () => {
+      it('should throws missing id, name and email fields exception if does not receive id', () => {
+        expect(() => User.fromProperties()).toThrow(
+          new UserError('User must have id, name and email')
+        );
+      });
+
       it('should throws missing id field exception if does not receive id', () => {
-        expect(() => User.fromProperties()).toThrow(new UserError('User must have id'));
+        expect(() => User.fromProperties({ id: '' })).toThrow(new UserError('User must have id'));
       });
 
       it('should throws missing name field exception if does not receive name', () => {
@@ -28,7 +34,11 @@ describe('User domain', () => {
           new UserError('User must have email')
         );
       });
+    });
+  });
 
+  describe('User gender', () => {
+    describe('When receiving invalid phone', () => {
       it('should throws invalid gender exception', () => {
         expect(() => {
           User.fromProperties({ ...defaultUser, gender: 'NEUTRAL' });
@@ -38,84 +48,26 @@ describe('User domain', () => {
           )
         );
       });
+    });
+  });
 
+  describe('User phone', () => {
+    describe('When receiving invalid phone', () => {
       it('should throws invalid phone exception', () => {
         expect(() => {
           User.fromProperties({ ...defaultUser, phone: '(123) 234 5678' });
         }).toThrow(new UserError('User received invalid phone prop.'));
       });
+    });
+  });
 
+  describe('User birthday', () => {
+    describe('When receiving invalid birthday', () => {
       it('should throws invalid birthday exception', () => {
         expect(() => {
           User.fromProperties({ ...defaultUser, birthday: new Date() });
         }).toThrow(new UserError('User received invalid birthday prop.'));
       });
-    });
-  });
-
-  describe('User gender', () => {
-    it('should set user gender to male', () => {
-      const user = User.fromProperties(defaultUser);
-
-      user.gender = 'MALE';
-
-      expect(user.gender).toBe('MALE');
-    });
-
-    it('should set user gender to female', () => {
-      const user = User.fromProperties(defaultUser);
-
-      user.gender = 'FEMALE';
-
-      expect(user.gender).toBe('FEMALE');
-    });
-
-    it('should throws invalid gender exception', () => {
-      const user = User.fromProperties(defaultUser);
-
-      expect(() => {
-        user.gender = 'NEUTRAL';
-      }).toThrow(
-        new UserError(
-          'User received invalid gender prop. Must be MALE or FEMALE but received NEUTRAL'
-        )
-      );
-    });
-  });
-
-  describe('User phone', () => {
-    it('should set user phone', () => {
-      const user = User.fromProperties(defaultUser);
-
-      user.phone = '2342345678';
-
-      expect(user.phone).toBe('2342345678');
-    });
-
-    it('should throws invalid phone exception', () => {
-      const user = User.fromProperties(defaultUser);
-
-      expect(() => {
-        user.phone = '(123) 234 5678';
-      }).toThrow(new UserError('User received invalid phone prop.'));
-    });
-  });
-
-  describe('User birthday', () => {
-    it('should set user birthday', () => {
-      const user = User.fromProperties(defaultUser);
-
-      user.birthday = new Date(2003, 4, 6).toISOString();
-
-      expect(user.birthday).toBe('2003-05-06T03:00:00.000Z');
-    });
-
-    it('should throws invalid birthday exception', () => {
-      const user = User.fromProperties(defaultUser);
-
-      expect(() => {
-        user.birthday = new Date();
-      }).toThrow(new UserError('User received invalid birthday prop.'));
     });
   });
 });

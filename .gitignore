@@ -18,3 +18,4 @@ google-services.json
 
 # testing
 .jest-test-results.json
+coverage/
