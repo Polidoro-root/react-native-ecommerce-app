@@ -1,5 +1,5 @@
-import { User } from '@/domain/user/User';
-import { UserGender } from '@/domain/user/types';
+import { User } from '@/core/domain/user/User';
+import { UserGender } from '@/core/domain/user/types';
 
 export class UserDto {
   constructor(
@@ -12,7 +12,7 @@ export class UserDto {
   ) {}
 
   toDomain(): User {
-    return User.fromProperties({
+    return new User({
       id: this.id,
       name: this.name,
       email: this.email,

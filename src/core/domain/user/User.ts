@@ -2,39 +2,74 @@ import { UserProps, UserGender } from './types';
 import { UserError } from './UserError';
 
 export class User {
-  static fromProperties(props: UserProps) {
-    if (!props) {
-      throw new UserError('User must have id, name and email');
-    }
+  constructor(private props: UserProps) {
+    this.validateRequiredProps(props);
 
-    const { id, name, email, phone, gender, birthday } = props;
+    this.validateIfHasMoreThanOneName(props.name);
 
-    return new User(id, name, email, phone, gender, birthday);
+    this.validateIfHasValidEmail(props.email);
+
+    this.validateIfHasValidPhone(props?.phone);
+
+    this.validateIfHasValidBirthday(props?.birthday);
+
+    this.validateIfHasValidGender(props?.gender);
   }
 
-  private constructor(
-    private readonly id: string,
-    private readonly name: string,
-    private readonly email: string,
-    private readonly phone?: string,
-    private readonly gender?: UserGender,
-    private readonly birthday?: string
-  ) {
-    this.validateRequiredProps({
-      id,
-      name,
-      email,
-    });
+  get id() {
+    return this.props.id;
+  }
 
-    this.validateIfHasMoreThanOneName(name);
+  set id(value) {
+    throw new UserError('User id cannot be changed');
+  }
 
-    this.validateIfHasValidEmail(email);
+  get name() {
+    return this.props.name;
+  }
 
-    this.validateIfHasValidPhone(phone);
+  set name(value) {
+    throw new UserError('User name cannot be changed');
+  }
 
-    this.validateIfHasValidBirthday(birthday);
+  get email() {
+    return this.props.email;
+  }
 
-    this.validateIfHasValidGender(gender);
+  set email(value) {
+    this.validateIfHasValidEmail(value);
+
+    this.props.email = value;
+  }
+
+  get phone() {
+    return this.props.phone;
+  }
+
+  set phone(value) {
+    this.validateIfHasValidPhone(value);
+
+    this.props.phone = value;
+  }
+
+  get gender() {
+    return this.props.gender;
+  }
+
+  set gender(value) {
+    this.validateIfHasValidGender(value);
+
+    this.props.gender = value;
+  }
+
+  get birthday() {
+    return this.props.birthday;
+  }
+
+  set birthday(value) {
+    this.validateIfHasValidBirthday(value);
+
+    this.props.birthday = value;
   }
 
   private validateRequiredProps(props: UserProps) {

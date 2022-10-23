@@ -1,6 +1,6 @@
-import { UserToRegister } from '@/domain/user/types';
+import { UserToRegister } from '@/core/domain/user/types';
 
-export const UserService = jest.fn().mockImplementation(() => {
+export const UserResource = jest.fn().mockImplementation(() => {
   return {
     registerUser: ({ name, email }: UserToRegister) => {
       return new Promise((resolve, reject) => {

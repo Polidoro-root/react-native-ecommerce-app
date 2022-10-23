@@ -1,6 +1,6 @@
-import { UserRepository } from '@/domain/user/repository/UserRepository';
-import { UserToRegister } from '@/domain/user/types';
-import { User } from '@/domain/user/User';
+import { UserRepository } from '@/core/domain/user/repository/UserRepository';
+import { UserToRegister } from '@/core/domain/user/types';
+import { User } from '@/core/domain/user/User';
 import { FirebaseApp } from 'firebase/app';
 import { getDatabase, push, ref, set } from 'firebase/database';
 import { RestClient } from '../RestClient';
@@ -25,14 +25,7 @@ export class UserResource implements UserRepository {
       throw new Error('UserResource registerUser: Cannot register user');
     }
 
-    const newUser = new UserDto(
-      newUserRef.key,
-      user.name,
-      user.email,
-      user?.phone,
-      user?.gender,
-      user?.birthday
-    );
+    const newUser = new UserDto(newUserRef.key, user.name, user.email);
 
     return newUser.toDomain();
   }

@@ -1,5 +1,5 @@
-import { User } from '@/domain/user/User';
-import { UserToRegister } from '@/domain/user/types';
+import { User } from '@/core/domain/user/User';
+import { UserToRegister } from '@/core/domain/user/types';
 
 export interface UserRepository {
   getCurrentUser(): User;

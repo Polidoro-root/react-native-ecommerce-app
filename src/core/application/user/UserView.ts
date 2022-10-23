@@ -1,5 +1,5 @@
-import type { UserGender } from '@/domain/user/types';
-import { User } from '@/domain/user/User';
+import type { UserGender, UserProps } from '@/core/domain/user/types';
+import { User } from '@/core/domain/user/User';
 
 export class UserView {
   private constructor(

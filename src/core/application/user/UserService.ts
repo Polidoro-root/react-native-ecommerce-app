@@ -1,5 +1,5 @@
-import { UserRepository } from '@/domain/user/repository/UserRepository';
-import { UserToRegister } from '@/domain/user/types';
+import { UserRepository } from '@/core/domain/user/repository/UserRepository';
+import { UserToRegister } from '@/core/domain/user/types';
 import { RegisterUserUseCase } from './useCases/RegisterUserUseCase';
 
 export class UserService {
